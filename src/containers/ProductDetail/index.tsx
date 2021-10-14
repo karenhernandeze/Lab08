@@ -103,6 +103,8 @@ class ProductDetail extends React.Component<{}, ProductState> {
         this.setState({
             selectedSize: value
         })
+        const sku = this.state.helper.getSKU(this.state.selectedColor, value)
+        console.log(sku)
     }
 }
 
