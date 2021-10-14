@@ -41,7 +41,9 @@ class ProductDetail extends React.Component<{}, ProductState> {
             <ProductInfo product={this.state.product} colors={this.state.colors} 
             selectedColor={this.state.selectedColor} 
             changedColor={this.changedColor} sizes={this.state.sizes} 
-            selectedSize={this.state.selectedSize} changedSize={this.changedSize} />
+            selectedSize={this.state.selectedSize} changedSize={this.changedSize} 
+            sku={this.state.sku} skuData={this.skuData}
+            />
         )
     }
 
@@ -105,6 +107,15 @@ class ProductDetail extends React.Component<{}, ProductState> {
         })
         const sku = this.state.helper.getSKU(this.state.selectedColor, value)
         console.log(sku)
+    }
+
+    skuData = (event: any) => {
+        let skuInfo= this.state.helper.getSKU(this.state.selectedColor, this.state.selectedSize)
+        console.log("Sku: " + JSON.stringify(skuInfo));
+        console.log("Sku id: " + skuInfo.id);
+        this.setState({
+            sku: skuInfo
+        })
     }
 }
 
